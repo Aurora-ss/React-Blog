@@ -1,0 +1,61 @@
+.author-div{
+    text-align: center;
+    padding: 1rem;
+}
+.author-div div{
+    margin-bottom: 1rem;
+}
+.author-introduction{
+    font-size: .8rem;
+    color: #999;
+}
+.account{
+    background-color: #999;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+.icon{
+    color: white;
+    transform: translateX(-1.75rem);
+}
+
+.sj{
+    width: 0px;
+    height: 0px;
+    border-bottom: 6px solid #8a957a;
+    border-right: 6px solid transparent;
+    border-top: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-top: -4px;
+    margin-left: 15px;
+    opacity: 0.8;
+}
+.squre{
+    width: 170px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #8a957a;
+    color: white;
+    margin-top: -16px;
+    margin-left: -60px;
+    opacity: 0.8;
+}
+
+.tips1 , .tips2 , .tips3{
+    position: absolute;
+    display: none;
+    transition: all .5s;
+}
+
+.content1:hover .tips1,
+.content2:hover .tips2,
+.content3:hover .tips3{
+    display: block;
+    transition: all .8s;
+}
+
+.author-introduction .content1,
+.author-introduction .content2,
+.author-introduction .content3{
+    display: inline-block;
+}

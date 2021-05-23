@@ -40,7 +40,6 @@ function Login(props){
         }).then(//成功
             res=>{
                 setIsLoading(false)//可重复提交
-                console.log(res)
                 // 去conrtller->admin->main.js中查找
                 if(res.data.data==='登录成功'){
                     // 缓存localStorage
@@ -53,6 +52,12 @@ function Login(props){
                 }
             }
         )
+    }
+
+    const onkeydown = (e) => {
+        if(e.keyCode === 13){
+            checkLogin()
+        }
     }
 
 //Span 旋转加载  防止重复提交
@@ -76,7 +81,8 @@ function Login(props){
                        size="large"
                        placeholder="Enter your password"
                        prefix={<KeyOutlined style={{color:'rgba(0,0,0,.25)'}}/>}
-                       onChange={(e)=>{setPassword(e.target.value)}}
+                       onChange={(e)=>{setPassword(e.target.value)}}  
+                       onKeyDown={e => onkeydown(e)}
                     />
                     <br/><br/>
                     {/* block块级元素 */}

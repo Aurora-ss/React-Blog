@@ -11,6 +11,7 @@ let servicePath={
     getCommentList:ipUrl+'getCommentList',//获得评论列表内容
     getCommentById:ipUrl+'getCommentById/',//获得评论列表内容
     deleteComment:ipUrl+'deleteComment/',//删除评论 通过id
+    updateComment:ipUrl+'updateComment'
 }
 
 export default servicePath

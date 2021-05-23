@@ -14,6 +14,5 @@ module.exports = app=>{
     router.get('/admin/getCommentList',adminauth,controller.admin.main.getCommentList) // 获取评论列表
     router.get('/admin/getCommentById/:id',adminauth,controller.admin.main.getCommentById) // 根据评论id获取评论信息
     router.get('/admin/deleteComment/:id',adminauth,controller.admin.main.deleteComment) // 根据评论id删除评论信息
-    // router.get('/admin/editComment/:id',adminauth,controller.admin.main.editComment) 
     router.post('/admin/updateComment',adminauth,controller.admin.main.updateComment)
 }

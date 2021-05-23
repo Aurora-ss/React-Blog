@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   UserOutlined,
+  PoweroffOutlined
 } from '@ant-design/icons';
 import '../static/css/AdminIndex.css'
 import {Route} from 'react-router-dom'
@@ -18,7 +19,9 @@ const { SubMenu } = Menu;
 
   function AdminIndex(props){
     //左导航栏 false为展开
-    const [collapsed,setCollapsed ] =useState(false)
+    const [collapsed,setCollapsed ] = useState(false)
+    const [loading,setLoading ] = useState(false)
+
     const onCollapse = collapsed => {
         setCollapsed(collapsed)
     };
@@ -33,10 +36,17 @@ const { SubMenu } = Menu;
       }
     }
     const handleMenuClick = (e) => {
-      console.log(e)
+      // console.log(e)
       if(e.key === "commentList"){
         props.history.push('/index/commentList')
       }
+    }
+    // 退出
+    const signOut = () => {
+      setLoading(true)
+      localStorage.removeItem('openId')
+      props.history.push('/')
+      setLoading(false)
     }
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -70,13 +80,15 @@ const { SubMenu } = Menu;
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          
+        <Layout className="site-layout">    
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>后台管理系统</Breadcrumb.Item>
-              <Breadcrumb.Item>工作台</Breadcrumb.Item>
-            </Breadcrumb>
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>后台管理系统</Breadcrumb.Item>
+                <Breadcrumb.Item>工作台</Breadcrumb.Item>
+              </Breadcrumb>
+              <Button type="primary" icon={<PoweroffOutlined />} onClick={signOut} loading={loading}>退出</Button>
+            </div>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
               <div>
                  <Route path="/index/" exact  component={AddArticle} />

@@ -155,5 +155,16 @@ class MainContoller extends Contoller {
             data: res
         }
     }
+
+    // 保存修改的评论内容
+    async updateComment() {
+        let tmpComment = this.ctx.request.body
+        // 去数据库取数据
+        const result = await this.app.mysql.update('comment', tmpComment)
+        const updateSuccess = result.affectedRows === 1
+        this.ctx.body = {
+            isSuccess: updateSuccess
+        }
+    }
 }
 module.exports = MainContoller
